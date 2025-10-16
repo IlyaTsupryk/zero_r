@@ -1,0 +1,17 @@
+[package]
+name = "zero-r"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["fmt", "time", "env-filter", "chrono"] }
+tracing-appender = "0.2"
+chrono = { version = "0.4", features = ["serde"] }
+serde = { version = "1.0", features = ["derive"] }
+sqlx = { version = "0.8", features = ["runtime-tokio-rustls", "mysql", "chrono", "uuid", "rust_decimal"] }
+tokio = { version = "1.0", features = ["full"] }
+dotenvy = "0.15"
+rust-bybit = "0.2.0"
+anyhow = "1.0.100"
+rust_decimal = { version = "1.36", features = ["serde"] }
