@@ -4,10 +4,7 @@ use rust_decimal::Decimal;
 use sqlx::mysql::{MySqlConnectOptions, MySqlPoolOptions};
 use std::collections::HashMap;
 use std::str::FromStr;
-use std::sync::{
-    atomic::AtomicBool,
-    Arc, Mutex,
-};
+use std::sync::{Arc, Mutex, atomic::AtomicBool};
 
 fn decimal(value: &str) -> Decimal {
     Decimal::from_str(value).unwrap()

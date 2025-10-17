@@ -1,7 +1,7 @@
 use chrono::{DateTime, Utc};
-use tracing::info;
-use serde::{Deserialize, Serialize};
 use rust_decimal::Decimal;
+use serde::{Deserialize, Serialize};
+use tracing::info;
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct OrderBook {
@@ -14,12 +14,12 @@ pub struct OrderBook {
 
 impl OrderBook {
     pub fn new(exchange: &str, symbol: &str) -> Self {
-        Self { 
-            exchange: exchange.to_string(), 
-            symbol: symbol.to_string(), 
-            last_update_ts: Utc::now(), 
-            bids: vec![], 
-            asks: vec![] 
+        Self {
+            exchange: exchange.to_string(),
+            symbol: symbol.to_string(),
+            last_update_ts: Utc::now(),
+            bids: vec![],
+            asks: vec![],
         }
     }
 
@@ -44,7 +44,10 @@ impl OrderBook {
             if let Some(item) = items.iter_mut().find(|item| item.price == price_dec) {
                 item.volume = volume_dec;
             } else {
-                items.push(OrderBookItem { price: price_dec, volume: volume_dec });
+                items.push(OrderBookItem {
+                    price: price_dec,
+                    volume: volume_dec,
+                });
             }
         }
     }
@@ -58,13 +61,12 @@ pub struct OrderBookItem {
 
 impl OrderBookItem {
     pub fn new(price: &str, volume: &str) -> Self {
-        Self { 
+        Self {
             price: price.parse::<Decimal>().unwrap(),
             volume: volume.parse::<Decimal>().unwrap(),
         }
     }
 }
-
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct CEXState {
@@ -110,11 +112,7 @@ impl DEXState {
     pub fn log(&self) {
         info!(
             "[{}] {} {} price={} volume={}",
-            self.exchange,
-            self.trade_pair,
-            self.direction,
-            self.price,
-            self.volume,
+            self.exchange, self.trade_pair, self.direction, self.price, self.volume,
         );
     }
 }

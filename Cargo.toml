@@ -15,3 +15,8 @@ dotenvy = "0.15"
 rust-bybit = "0.2.0"
 anyhow = "1.0.100"
 rust_decimal = { version = "1.36", features = ["serde"] }
+solana-client = "2.1.0"
+solana-sdk = "2.1.0"
+commons = { path = "src/screeners/dlmm-sdk/commons" }
+bytemuck = "1.13.1"
+bincode = "1.3.3"

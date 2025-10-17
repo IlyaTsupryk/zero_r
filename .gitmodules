@@ -1,0 +1,3 @@
+[submodule "src/screeners/dlmm-sdk"]
+	path = src/screeners/dlmm-sdk
+	url = https://github.com/MeteoraAg/dlmm-sdk.git
